@@ -1,8 +1,8 @@
 #include <stdio.h>
-
+#include "DJalgo.h"
 
 int main (){
-    printf("Hello World");
+    int result = deutschJozsaAlgorithm();
     return 0;
 }
 

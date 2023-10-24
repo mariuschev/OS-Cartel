@@ -6,4 +6,4 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(OS_Cartel
-        main.c)
+        main.c DJalgo.c DJalgo.h)
