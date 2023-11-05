@@ -1,15 +1,14 @@
 #include <stdio.h>
-#include "DJalgo.h"
+#include "Grov_seq.h"
+#include <stdbool.h>
+#include <stdlib.h>
 #include <omp.h>
 
 int main (){
-    // commence par 0 : constant
-    // commence par 1 : balanced
-
-    int result = deutschJozsaAlgorithm_seq();
-    printf("Result: %d\n", result);
-    int result2 = deutschJozsaAlgorithm_para();
-    printf("Result: %d\n", result2);
+    int list[] = {3, 6, 8, 7, 12, 4, 2};
+    int listSize = sizeof(list) / sizeof(list[0]);
+    int target = 7;
+    groverAlgorithm(target, list, listSize);
     return 0;
 }
 
