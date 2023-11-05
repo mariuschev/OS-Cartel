@@ -9,6 +9,7 @@ int main (){
     int listSize = sizeof(list) / sizeof(list[0]);
     int target = 7;
     groverAlgorithm(target, list, listSize);
+
     return 0;
 }
 

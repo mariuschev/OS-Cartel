@@ -1,0 +1,8 @@
+# ninja log v5
+2	74	7209209255824524	CMakeFiles/OS_Cartel.dir/main.c.obj	74c0ffa0691ab535
+74	159	7209209256630280	OS_Cartel.exe	3658a0b44c2ed522
+2	104	7209207397509164	CMakeFiles/OS_Cartel.dir/Grov_seq.c.obj	f2fd3026e66330e9
+1	184	7209212444958907	build.ninja	58b85dcc624a9efe
+14	123	7209207397740338	CMakeFiles/OS_Cartel.dir/grov_para.c.obj	386a950f17e08c4a
+2	60	7209212469510533	CMakeFiles/OS_Cartel.dir/Grov_para.c.obj	95957e3ad73f833e
+61	150	7209212470358549	OS_Cartel.exe	bfe45838ec207620
