@@ -8,7 +8,7 @@ int oracle(int target, int guess) {
 int groverAlgorithm(int target, int* list, int listSize) {
     for (int i = 0; i < listSize; i++) {
         if (oracle(target, list[i])) {
-            printf("Target %d found at index %d.\n", target, i);
+            printf("S | Target %d found at index %d.\n", target, i);
             return i;
         }
     }
