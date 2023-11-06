@@ -9,5 +9,4 @@
 
 int grover_parallel_algorithm(int size, int target, int num_threads, int *values);
 
-
 #endif //OS_CARTEL_GROV_PARA_H

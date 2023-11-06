@@ -11,35 +11,29 @@ typedef struct {
     int thread_id;
     int num_threads;
     pthread_barrier_t *barrier;
-    int *result_index; // Utiliser un pointeur pour stocker le résultat
+    int *result_index;
 } ThreadData;
 
 void *grover_parallel_iteration(void *arg) {
     ThreadData *data = (ThreadData *)arg;
-
-    // Rechercher la valeur cible dans la partie du tableau assignée à ce thread
     for (int i = data->thread_id; i < data->size; i += data->num_threads) {
         if (data->values[i] == data->target) {
-            // Stocker l'index dans le résultat et terminer le thread
             *(data->result_index) = i;
             pthread_barrier_wait(data->barrier);
             pthread_exit(NULL);
         }
     }
-
-    // Synchroniser les threads
+    //Synchronize code
     pthread_barrier_wait(data->barrier);
-
     pthread_exit(NULL);
 }
 
 int grover_parallel_algorithm(int size, int target, int num_threads, int *values) {
+
     pthread_t *threads = (pthread_t *)malloc(num_threads * sizeof(pthread_t));
     pthread_barrier_t barrier;
     pthread_barrier_init(&barrier, NULL, num_threads);
-
-    int result_index = -1; // Variable pour stocker l'index de la première occurrence de la valeur cible
-    // Pointeur vers la variable résultat
+    int result_index = -1;
     int *result_pointer = &result_index;
 
     ThreadData *thread_data = (ThreadData *)malloc(num_threads * sizeof(ThreadData));
@@ -50,7 +44,7 @@ int grover_parallel_algorithm(int size, int target, int num_threads, int *values
         thread_data[i].thread_id = i;
         thread_data[i].num_threads = num_threads;
         thread_data[i].barrier = &barrier;
-        thread_data[i].result_index = result_pointer; // Passer le pointeur
+        thread_data[i].result_index = result_pointer;
     }
 
     for (int i = 0; i < num_threads; i++) {
@@ -60,10 +54,8 @@ int grover_parallel_algorithm(int size, int target, int num_threads, int *values
     for (int i = 0; i < num_threads; i++) {
         pthread_join(threads[i], NULL);
     }
-
     free(threads);
     free(thread_data);
     pthread_barrier_destroy(&barrier);
-
     return result_index;
 }

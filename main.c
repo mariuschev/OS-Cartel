@@ -15,16 +15,16 @@ double get_current_time() {
 }
 
 int main (){
-    // 10 lists :10,100, 1000, 10000, 100000, 1000000
-    int nb =30;
+
+    int nb =600; // change to test different list sizes
     int list[nb];
     for (int i = 0; i < nb; i++) {
         list[i] = rand() % 100;
-  }
+    }
     int listSize = sizeof(list) / sizeof(list[0]);
     int target = 34;
     int iterations = (int)ceil(M_PI / (4.0 * sqrt(listSize))); // Number of iterations
-    int num_threads = 4; // Number of threads to use
+    int num_threads = 4;
     double start = get_current_time();
     int resultat_para = grover_parallel_algorithm(listSize, target, num_threads, list);
     if (resultat_para != -1) {
@@ -38,8 +38,6 @@ int main (){
     groverAlgorithm(target, list, listSize);
     end = get_current_time();
     printf("Sequential execution time: %f seconds\n", end - start);
-
-
     return 0;
 }
 
